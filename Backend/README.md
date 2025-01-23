@@ -227,9 +227,8 @@ To retrieve a user's profile, send a `GET` request to `/users/profile` with the 
 
 
 
-### Register Captain
 
-`POST /captains/register`
+### **POST  /captains/register**
 
 Registers a new captain.
 
@@ -255,4 +254,115 @@ Registers a new captain.
     - `errors` (array): List of validation errors.
     - `message` (string): Error message indicating the captain already exists.
 
+
+    ### **GET /captains/profile**
+
+    This endpoint allows captains to retrieve their profile information.
+
+    ---
+
+    ### **Request**
+
+    #### **Endpoint**
+    `GET /captains/profile`
+
+    #### **Headers**
+    | Header          | Value             |
+    |-----------------|-------------------|
+    | `Authorization` | `Bearer <token>`  |
+
+    ---
+
+    ### **Response**
+
+    #### **Success Response**
+    | HTTP Status | Description                        |
+    |-------------|------------------------------------|
+    | `200 OK`    | Captain profile retrieved successfully.|
+
+    #### **Response Body**
+    | Field                  | Type   | Description                                    |
+    |------------------------|--------|------------------------------------------------|
+    | `captain`              | Object | Captain object containing captain details.     |
+    | `captain._id`          | String | The captain's unique ID.                       |
+    | `captain.fullName`     | Object | The captain's full name.                       |
+    | `captain.fullName.firstName` | String | The captain's first name.                  |
+    | `captain.fullName.lastName`  | String | The captain's last name.                   |
+    | `captain.email`        | String | The captain's email address.                   |
+    | `captain.vehichle`     | Object | The captain's vehicle details.                 |
+    | `captain.vehichle.color` | String | The color of the vehicle.                   |
+    | `captain.vehichle.plate` | String | The plate number of the vehicle.            |
+    | `captain.vehichle.capacity` | Number | The capacity of the vehicle.              |
+    | `captain.vehichle.vehichleType` | String | The type of the vehicle.                |
+
+    #### **Success Response Example**
+    ```json
+    {
+        "captain": {
+            "_id": "captain_id",
+            "fullName": {
+                "firstName": "John",
+                "lastName": "Doe"
+            },
+            "email": "john.doe@example.com",
+            "vehichle": {
+                "color": "Red",
+                "plate": "XYZ123",
+                "capacity": 4,
+                "vehichleType": "car"
+            }
+        }
+    }
+    ```
+
+    ---
+
+    ### **Usage**
+
+    To retrieve a captain's profile, send a `GET` request to `/captains/profile` with the required authorization header.
+
+    ---
+
+    ### **GET /captains/logout**
+
+    This endpoint allows captains to log out by clearing the authentication token.
+
+    ---
+
+    ### **Request**
+
+    #### **Endpoint**
+    `GET /captains/logout`
+
+    #### **Headers**
+    | Header          | Value             |
+    |-----------------|-------------------|
+    | `Authorization` | `Bearer <token>`  |
+
+    ---
+
+    ### **Response**
+
+    #### **Success Response**
+    | HTTP Status | Description                |
+    |-------------|----------------------------|
+    | `200 OK`    | Captain successfully logged out.|
+
+    #### **Response Body**
+    | Field      | Type   | Description                        |
+    |------------|--------|------------------------------------|
+    | `message`  | String | Confirmation message.              |
+
+    #### **Success Response Example**
+    ```json
+    {
+        "message": "Logout successfully"
+    }
+    ```
+
+    ---
+
+    ### **Usage**
+
+    To log out a captain, send a `GET` request to `/captains/logout` with the required authorization header.
 
