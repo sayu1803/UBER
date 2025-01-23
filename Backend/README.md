@@ -224,3 +224,35 @@ This endpoint allows users to retrieve their profile information.
 ### **Usage**
 
 To retrieve a user's profile, send a `GET` request to `/users/profile` with the required authorization header.
+
+
+
+### Register Captain
+
+`POST /captains/register`
+
+Registers a new captain.
+
+#### Request Body
+
+- `fullName` (object, required)
+    - `firstName` (string, required): The first name of the captain. Must be at least 3 characters long.
+    - `lastName` (string, optional): The last name of the captain. Must be at least 3 characters long if provided.
+- `email` (string, required): The email address of the captain. Must be a valid email format.
+- `password` (string, required): The password for the captain's account. Must be at least 8 characters long.
+- `vehichle` (object, required)
+    - `color` (string, required): The color of the vehicle. Must be at least 3 characters long.
+    - `plate` (string, required): The plate number of the vehicle. Must be at least 3 characters long.
+    - `capacity` (number, required): The capacity of the vehicle. Must be at least 1.
+    - `vehichleType` (string, required): The type of the vehicle. Must be one of "car", "auto", or "motorcycle".
+
+#### Responses
+
+- `201 Created`: Successfully registered the captain.
+    - `token` (string): The authentication token for the captain.
+    - `captain` (object): The registered captain's details.
+- `400 Bad Request`: Validation error or captain already exists.
+    - `errors` (array): List of validation errors.
+    - `message` (string): Error message indicating the captain already exists.
+
+
