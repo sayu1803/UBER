@@ -12,7 +12,7 @@ This endpoint allows users to log in by providing their email and password. Upon
 
 #### **Endpoint**  
 `POST /users/login`
-
+ 
 #### **Headers**  
 | Header          | Value             |
 |------------------|-------------------|
